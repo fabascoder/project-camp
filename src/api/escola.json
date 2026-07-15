@@ -10,10 +10,35 @@
       "almoco": "11:30",
       "janta": "18:00"
     },
+    "funcionarios": [
+      {
+        "id": 1,
+        "nome": "Maria Aparecida",
+        "matricula": 1001
+      },
+      {
+        "id": 2,
+        "nome": "José Carlos",
+        "matricula": 1002
+      },
+      {
+        "id": 3,
+        "nome": "Ana Paula",
+        "matricula": 1003
+      }
+    ],
     "alimentos": [
       {
         "id": 1,
         "nome": "Arroz"
+      },
+      {
+        "id": 2,
+        "nome": "Feijão"
+      },
+      {
+        "id": 3,
+        "nome": "Frango"
       }
     ]
   },
@@ -28,10 +53,30 @@
       "almoco": "12:00",
       "janta": "18:30"
     },
+    "funcionarios": [
+      {
+        "id": 1,
+        "nome": "Carlos Henrique",
+        "matricula": 2001
+      },
+      {
+        "id": 2,
+        "nome": "Fernanda Souza",
+        "matricula": 2002
+      }
+    ],
     "alimentos": [
       {
         "id": 1,
         "nome": "Macarrão"
+      },
+      {
+        "id": 2,
+        "nome": "Molho de Tomate"
+      },
+      {
+        "id": 3,
+        "nome": "Carne Moída"
       }
     ]
   }
