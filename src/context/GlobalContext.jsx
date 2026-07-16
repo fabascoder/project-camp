@@ -6,6 +6,8 @@ export const GlobalContext = React.createContext();
 export const StorageGlobal = ({ children }) => {
   const API = React.useContext(ContextServiceApi);
 
+
+
   const [codeAcess, setCodeAcess] = React.useState("");
   const [matricula, setMatricula] = React.useState("");
   const [data, setData] = React.useState({
@@ -31,6 +33,7 @@ export const StorageGlobal = ({ children }) => {
       escola,
       funcionario,
     });
+    return true
   }
 
   return (

@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, View, TextInput } from "react-native";
 import { ContextServiceApi } from "../api/ContextServiceApi";
 import { GlobalContext } from "../context/GlobalContext";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Login() {
  const  {
@@ -16,14 +17,25 @@ export default function Login() {
         data,
       } = React.useContext(GlobalContext)
 
+
+      const navigation = useNavigation()
+
+  function entrar() {
+    const sucesso = handleLogin(codeAcess, matricula); 
+
+    if(sucesso) {
+        navigation.navigate("Home")
+    }
+  }
+
   return (
     <View style={styles.container}>
-      <h1>Login</h1>
-      {data.escola && data.funcionario && (
+      <Text style={{ fontSize: 32 }}>Login</Text>
+      {/* {data.escola && data.funcionario && (
         <Text>
           Escola: {data.escola.nome} | Funcionario: {data.funcionario.nome}
         </Text>
-      )}
+      )} */}
 
       <TextInput
         value={matricula}
@@ -36,7 +48,7 @@ export default function Login() {
         placeholder="Codigo Escola"
       />
 
-      <Pressable onPress={() => handleLogin(codeAcess, matricula)}>
+      <Pressable onPress={entrar}>
         <Text>Enviar</Text>
       </Pressable>
 
@@ -44,6 +56,7 @@ export default function Login() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
