@@ -7,7 +7,7 @@ Projeto desenvolvido com React Native e Expo para o controle da temperatura dos 
 Clone o repositório:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+git clone https://github.com/fabascoder/project-camp.git
 ```
 
 Acesse a pasta do projeto:
