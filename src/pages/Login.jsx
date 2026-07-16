@@ -30,28 +30,26 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 32 }}>Login</Text>
-      {/* {data.escola && data.funcionario && (
-        <Text>
-          Escola: {data.escola.nome} | Funcionario: {data.funcionario.nome}
-        </Text>
-      )} */}
+      <View style={styles.card}>
+        <Text style={styles.title}>Login</Text>
 
-      <TextInput
-        value={matricula}
-        onChangeText={setMatricula}
-        placeholder="Matricula"
-      />
-      <TextInput
-        value={codeAcess}
-        onChangeText={setCodeAcess}
-        placeholder="Codigo Escola"
-      />
+        <TextInput
+          style={styles.input}
+          value={matricula}
+          onChangeText={setMatricula}
+          placeholder="Matricula"
+        />
+        <TextInput
+          style={styles.input}
+          value={codeAcess}
+          onChangeText={setCodeAcess}
+          placeholder="Codigo Escola"
+        />
 
-      <Pressable onPress={entrar}>
-        <Text>Enviar</Text>
-      </Pressable>
-
+        <Pressable style={styles.button} onPress={entrar}>
+          <Text style={styles.buttonText}>Enviar</Text>
+        </Pressable>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -64,5 +62,35 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    padding: 16,
+  },
+  card: {
+    width: "100%",
+    maxWidth: 500,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "#000",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "700",
+    marginBottom: 16,
+  },
+  input: {
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "#000",
+    padding: 12,
+    marginBottom: 12,
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: "#000",
+    paddingVertical: 14,
+    alignItems: "center",
+  },
+  buttonText: {
+    fontWeight: "700",
+    color: "#000",
   },
 });

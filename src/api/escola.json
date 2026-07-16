@@ -1,83 +1,198 @@
-[
-  {
-    "id": 1,
-    "nome": "EMEF Monte Verde",
-    "numeroAlunos": 520,
-    "imagemCardapio": "cardapio-escola-1.jpg",
-    "codAcesso": 1234,
-    "horarios": {
-      "cafeManha": "07:30",
-      "almoco": "11:30",
-      "janta": "18:00"
+{
+  "alimentosGlobais": [
+    {
+      "id": 1,
+      "nome": "Leite"
     },
-    "funcionarios": [
-      {
-        "id": 1,
-        "nome": "Maria Aparecida",
-        "matricula": 1001
-      },
-      {
-        "id": 2,
-        "nome": "José Carlos",
-        "matricula": 1002
-      },
-      {
-        "id": 3,
-        "nome": "Ana Paula",
-        "matricula": 1003
-      }
-    ],
-    "alimentos": [
-      {
-        "id": 1,
-        "nome": "Arroz"
-      },
-      {
-        "id": 2,
-        "nome": "Feijão"
-      },
-      {
-        "id": 3,
-        "nome": "Frango"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "nome": "EMEF José de Anchieta",
-    "numeroAlunos": 380,
-    "imagemCardapio": "cardapio-escola-2.jpg",
-    "codAcesso": 1233,
-    "horarios": {
-      "cafeManha": "08:00",
-      "almoco": "12:00",
-      "janta": "18:30"
+    {
+      "id": 2,
+      "nome": "Pão"
     },
-    "funcionarios": [
-      {
-        "id": 1,
-        "nome": "Carlos Henrique",
-        "matricula": 2001
-      },
-      {
-        "id": 2,
-        "nome": "Fernanda Souza",
-        "matricula": 2002
-      }
-    ],
-    "alimentos": [
-      {
-        "id": 1,
-        "nome": "Macarrão"
-      },
-      {
-        "id": 2,
-        "nome": "Molho de Tomate"
-      },
-      {
-        "id": 3,
-        "nome": "Carne Moída"
-      }
-    ]
-  }
-]
+    {
+      "id": 3,
+      "nome": "Arroz"
+    },
+    {
+      "id": 4,
+      "nome": "Feijão"
+    },
+    {
+      "id": 5,
+      "nome": "Frango"
+    },
+    {
+      "id": 6,
+      "nome": "Macarrão"
+    },
+    {
+      "id": 7,
+      "nome": "Carne Moída"
+    },
+    {
+      "id": 8,
+      "nome": "Suco"
+    }
+  ],
+  "escolas": [
+    {
+      "id": 1,
+      "nome": "EMEF Monte Verde",
+      "numeroAlunos": 520,
+      "codAcesso": 1234,
+      "funcionarios": [
+        {
+          "id": 1,
+          "nome": "Maria Aparecida",
+          "matricula": 1001
+        },
+        {
+          "id": 2,
+          "nome": "José Carlos",
+          "matricula": 1002
+        }
+      ],
+      "horarios": [
+        {
+          "id": 1,
+          "nome": "Café da Manhã",
+          "inicio": "07:30",
+          "fim": "08:30",
+          "horarioAmostra": "08:00",
+          "alimentos": [
+            {
+              "alimentoId": 1,
+              "temperatura": 65
+            },
+            {
+              "alimentoId": 2,
+              "temperatura": 30
+            },
+            {
+              "alimentoId": 8,
+              "temperatura": 8
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "Almoço",
+          "inicio": "11:30",
+          "fim": "13:00",
+          "horarioAmostra": "12:00",
+          "alimentos": [
+            {
+              "alimentoId": 3,
+              "temperatura": 72
+            },
+            {
+              "alimentoId": 4,
+              "temperatura": 74
+            },
+            {
+              "alimentoId": 5,
+              "temperatura": 76
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "EMEF José de Anchieta",
+      "numeroAlunos": 380,
+      "codAcesso": 1233,
+      "funcionarios": [
+        {
+          "id": 1,
+          "nome": "Carlos Henrique",
+          "matricula": 2001
+        }
+      ],
+      "horarios": [
+        {
+          "id": 1,
+          "nome": "Café da Manhã",
+          "inicio": "08:00",
+          "fim": "09:00",
+          "horarioAmostra": "08:30",
+          "alimentos": [
+            {
+              "alimentoId": 1,
+              "temperatura": 63
+            },
+            {
+              "alimentoId": 2,
+              "temperatura": 27
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "Almoço",
+          "inicio": "12:00",
+          "fim": "13:30",
+          "horarioAmostra": "12:30",
+          "alimentos": [
+            {
+              "alimentoId": 6,
+              "temperatura": 71
+            },
+            {
+              "alimentoId": 7,
+              "temperatura": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "EMEF Vila Esperança",
+      "numeroAlunos": 640,
+      "codAcesso": 1235,
+      "funcionarios": [
+        {
+          "id": 1,
+          "nome": "Juliana Martins",
+          "matricula": 3001
+        }
+      ],
+      "horarios": [
+        {
+          "id": 1,
+          "nome": "Lanche da Manhã",
+          "inicio": "09:00",
+          "fim": "09:30",
+          "horarioAmostra": "09:10",
+          "alimentos": [
+            {
+              "alimentoId": 2,
+              "temperatura": 28
+            },
+            {
+              "alimentoId": 8,
+              "temperatura": 7
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "Jantar",
+          "inicio": "18:30",
+          "fim": "19:30",
+          "horarioAmostra": "19:00",
+          "alimentos": [
+            {
+              "alimentoId": 3,
+              "temperatura": 70
+            },
+            {
+              "alimentoId": 5,
+              "temperatura": 74
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
