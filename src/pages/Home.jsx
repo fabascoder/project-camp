@@ -1,37 +1,43 @@
 import React from "react";
-import { View, StyleSheet, Text, Pressable } from "react-native-web";
+import { View, StyleSheet, Text, Pressable } from "react-native";
 import { GlobalContext } from "../context/GlobalContext";
+import { useNavigation } from "@react-navigation/native";
 
 export const Home = () => {
   const dataContext = React.useContext(GlobalContext);
-  console.log(dataContext.data.escola.horarios);
-
-  function handleHorario({ target }) {
-    console.log(target);
-  }
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      {dataContext.data.escola && dataContext.data.funcionario && (
-        <View>
-          <Text>Olá, {dataContext.data.funcionario.nome}</Text>
-          <View>
-            {dataContext.data.escola.horarios.map((escola) => {
-              return (
-                <View key={escola.id}>
-                  <Pressable onPress={handleHorario}>
-                    <Text>
-                      {escola.nome} Inicio: {escola.inicio} fim: {escola.fim}
-                    </Text>
-                    <Text>Amostra: {escola.horarioAmostra}</Text>
-                  </Pressable>
-                </View>
-              );
-            })}
-          </View>
-        </View>
-      )}
-      <View></View>
+      <View style={styles.card}>
+        {dataContext.data.escola && dataContext.data.funcionario ? (
+          <>
+            <Text style={styles.title}>Olá, {dataContext.data.funcionario.nome}</Text>
+            {dataContext.data.escola.horarios.map((horario) => (
+              <View key={horario.id} style={styles.item}>
+                <Pressable
+                  style={({ hovered }) => [
+                    styles.pressable,
+                    hovered && styles.pressableHover,
+                  ]}
+                  onPress={() =>
+                    navigation.navigate("Horarios", {
+                      id: horario.id,
+                    })
+                  }
+                >
+                  <Text style={styles.itemTitle}>{horario.nome}</Text>
+                  <Text>Início: {horario.inicio}</Text>
+                  <Text>Fim: {horario.fim}</Text>
+                  <Text>Amostra: {horario.horarioAmostra}</Text>
+                </Pressable>
+              </View>
+            ))}
+          </>
+        ) : (
+          <Text>Carregando...</Text>
+        )}
+      </View>
     </View>
   );
 };
@@ -42,6 +48,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    padding: 16,
+  },
+  card: {
+    width: "100%",
+    maxWidth: 500,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "#000",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "700",
+    marginBottom: 16,
+  },
+  item: {
+    borderTopWidth: 1,
+    borderTopColor: "#000",
+    paddingVertical: 12,
+  },
+  pressable: {
+    padding: 12,
+  },
+  pressableHover: {
+    backgroundColor: "#e8e8e8",
+  },
+  itemTitle: {
+    fontWeight: "700",
   },
 });
 
