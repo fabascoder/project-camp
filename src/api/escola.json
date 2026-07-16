@@ -3,42 +3,47 @@
     "id": 1,
     "nome": "EMEF Monte Verde",
     "numeroAlunos": 520,
-    "imagemCardapio": "cardapio-escola-1.jpg",
     "codAcesso": 1234,
-    "horarios": {
-      "cafeManha": "07:30",
-      "almoco": "11:30",
-      "janta": "18:00"
-    },
     "funcionarios": [
       {
         "id": 1,
         "nome": "Maria Aparecida",
         "matricula": 1001
-      },
-      {
-        "id": 2,
-        "nome": "José Carlos",
-        "matricula": 1002
-      },
-      {
-        "id": 3,
-        "nome": "Ana Paula",
-        "matricula": 1003
       }
     ],
-    "alimentos": [
+    "horarios": [
       {
         "id": 1,
-        "nome": "Arroz"
+        "nome": "Café da Manhã",
+        "inicio": "07:30",
+        "fim": "08:30",
+        "horarioAmostra": "08:00",
+        "alimentos": [
+          {
+            "id": 1,
+            "nome": "Leite",
+            "temperatura": 65
+          },
+          {
+            "id": 2,
+            "nome": "Pão",
+            "temperatura": 28
+          }
+        ]
       },
       {
         "id": 2,
-        "nome": "Feijão"
-      },
-      {
-        "id": 3,
-        "nome": "Frango"
+        "nome": "Almoço",
+        "inicio": "11:30",
+        "fim": "13:00",
+        "horarioAmostra": "12:00",
+        "alimentos": [
+          {
+            "id": 1,
+            "nome": "Arroz",
+            "temperatura": 72
+          }
+        ]
       }
     ]
   },
@@ -46,37 +51,46 @@
     "id": 2,
     "nome": "EMEF José de Anchieta",
     "numeroAlunos": 380,
-    "imagemCardapio": "cardapio-escola-2.jpg",
     "codAcesso": 1233,
-    "horarios": {
-      "cafeManha": "08:00",
-      "almoco": "12:00",
-      "janta": "18:30"
-    },
     "funcionarios": [
       {
         "id": 1,
         "nome": "Carlos Henrique",
         "matricula": 2001
-      },
-      {
-        "id": 2,
-        "nome": "Fernanda Souza",
-        "matricula": 2002
       }
     ],
-    "alimentos": [
+    "horarios": [
       {
         "id": 1,
-        "nome": "Macarrão"
+        "nome": "Café da Manhã",
+        "inicio": "08:00",
+        "fim": "09:00",
+        "horarioAmostra": "08:30",
+        "alimentos": []
       },
       {
         "id": 2,
-        "nome": "Molho de Tomate"
+        "nome": "Almoço",
+        "inicio": "12:00",
+        "fim": "13:30",
+        "horarioAmostra": "12:30",
+        "alimentos": []
       },
       {
         "id": 3,
-        "nome": "Carne Moída"
+        "nome": "Lanche da Tarde",
+        "inicio": "15:00",
+        "fim": "15:30",
+        "horarioAmostra": "15:15",
+        "alimentos": []
+      },
+      {
+        "id": 4,
+        "nome": "Jantar",
+        "inicio": "18:30",
+        "fim": "19:30",
+        "horarioAmostra": "19:00",
+        "alimentos": []
       }
     ]
   }
