@@ -1,4 +1,4 @@
-# Controle de Temperatura de Alimentos
+# Projeto cozinha - camp
 
 Projeto desenvolvido com React Native e Expo para o controle da temperatura dos alimentos servidos em escolas.
 
