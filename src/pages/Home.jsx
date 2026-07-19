@@ -9,11 +9,18 @@ export const Home = () => {
 
   return (
     <View style={styles.container}>
+      {dataContext.data.escola && dataContext.data.funcionario && (
+        <>
+           <Text style={styles.title}>Olá, {dataContext.data.funcionario.nome}</Text>
+            <Text style={styles.title}>Escola: {dataContext.data.escola.nome}</Text>
+        </>
+      
+      )}
       <View style={styles.card}>
         {dataContext.data.escola && dataContext.data.funcionario ? (
           <>
-            <Text style={styles.title}>Olá, {dataContext.data.funcionario.nome}</Text>
-            <Text style={styles.title}>Escola: {dataContext.data.escola.nome}</Text>
+           
+            <Text style={styles.title}>Temperatura de aliemento</Text>
             {dataContext.data.escola.horarios.map((horario) => (
               <View key={horario.id} style={styles.item}>
                 <Pressable
