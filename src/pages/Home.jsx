@@ -13,6 +13,7 @@ export const Home = () => {
         {dataContext.data.escola && dataContext.data.funcionario ? (
           <>
             <Text style={styles.title}>Olá, {dataContext.data.funcionario.nome}</Text>
+            <Text style={styles.title}>Escola: {dataContext.data.escola.nome}</Text>
             {dataContext.data.escola.horarios.map((horario) => (
               <View key={horario.id} style={styles.item}>
                 <Pressable
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   pressable: {
     padding: 12,
   },
-  pressableHover: {
+  pressableHover: {   
     backgroundColor: "#e8e8e8",
   },
   itemTitle: {

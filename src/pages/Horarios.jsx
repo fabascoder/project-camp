@@ -60,7 +60,7 @@ export const Horarios = () => {
     setTemperatura("");
     setShowPicker(false);
   }
-
+console.log(horario)
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {horario && (
