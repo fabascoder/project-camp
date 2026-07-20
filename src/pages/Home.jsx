@@ -12,7 +12,17 @@ export const Home = () => {
       <View style={styles.card}>
         {dataContext.data.escola && dataContext.data.funcionario ? (
           <>
-            <Text style={styles.title}>Olá, {dataContext.data.funcionario.nome}</Text>
+            <Text style={styles.title}>
+              Olá, {dataContext.data.funcionario.nome}
+            </Text>
+
+            <Pressable
+              style={styles.mainButton}
+              onPress={() => navigation.navigate("Planilhas")}
+            >
+              <Text style={styles.mainButtonText}>Ir para Planilhas</Text>
+            </Pressable>
+
             {dataContext.data.escola.horarios.map((horario) => (
               <View key={horario.id} style={styles.item}>
                 <Pressable
@@ -61,6 +71,18 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "700",
     marginBottom: 16,
+  },
+  mainButton: {
+    backgroundColor: "#2563eb",
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 8,
+    marginBottom: 16,
+    alignItems: "center",
+  },
+  mainButtonText: {
+    color: "#fff",
+    fontWeight: "700",
   },
   item: {
     borderTopWidth: 1,
