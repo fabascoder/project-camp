@@ -1,53 +1,131 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, View, TextInput } from "react-native";
-import { ContextServiceApi } from "../api/ContextServiceApi";
 import { GlobalContext } from "../context/GlobalContext";
 import { useNavigation } from "@react-navigation/native";
+import { colors, commonStyles, radius } from "../theme/theme";
+import { Segmented } from "../components/Segmented";
+
+const PERFIS = [
+  { key: "cozinheira", label: "Cozinheira" },
+  { key: "nutricionista", label: "Nutricionista" },
+];
 
 export default function Login() {
- const  {
-        handleLogin,
-        escola,
-        funcionario,
-        codeAcess,
-        setCodeAcess,
-        matricula,
-        setMatricula,
-        data,
-      } = React.useContext(GlobalContext)
+  const {
+    handleLogin,
+    handleLoginNutricionista,
+    codeAcess,
+    setCodeAcess,
+    matricula,
+    setMatricula,
+  } = React.useContext(GlobalContext);
 
+  const [perfil, setPerfil] = React.useState("cozinheira");
+  const [codigoNutri, setCodigoNutri] = React.useState("");
+  const [senhaNutri, setSenhaNutri] = React.useState("");
+  const [erro, setErro] = React.useState("");
 
-      const navigation = useNavigation()
+  const navigation = useNavigation();
 
   function entrar() {
-    const sucesso = handleLogin(codeAcess, matricula); 
+    if (perfil === "cozinheira") {
+      const resultado = handleLogin(codeAcess, matricula);
+      if (resultado?.ok) {
+        setErro("");
+        navigation.navigate("Home");
+      } else {
+        setErro(resultado?.message || "Não foi possível entrar. Verifique os dados.");
+      }
+      return;
+    }
 
-    if(sucesso) {
-        navigation.navigate("Home")
+    const resultado = handleLoginNutricionista(codigoNutri, senhaNutri);
+    if (resultado?.ok) {
+      setErro("");
+      navigation.navigate("HomeNutricionista");
+    } else {
+      setErro(resultado?.message || "Não foi possível entrar. Verifique os dados.");
     }
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.title}>Login</Text>
+    <View style={commonStyles.screenCentered}>
+      <View style={commonStyles.card}>
+        <Text style={commonStyles.title}>Bem-vindo(a)</Text>
+        <Text style={commonStyles.subtitle}>
+          Selecione seu perfil e informe seus dados de acesso.
+        </Text>
 
-        <TextInput
-          style={styles.input}
-          value={matricula}
-          onChangeText={setMatricula}
-          placeholder="Matricula"
+        <Segmented
+          options={PERFIS}
+          value={perfil}
+          onChange={(value) => {
+            setPerfil(value);
+            setErro("");
+          }}
         />
-        <TextInput
-          style={styles.input}
-          value={codeAcess}
-          onChangeText={setCodeAcess}
-          placeholder="Codigo Escola"
-        />
+
+        {erro ? (
+          <View style={commonStyles.errorBanner}>
+            <Text style={commonStyles.errorBannerText}>{erro}</Text>
+          </View>
+        ) : null}
+
+        {perfil === "cozinheira" ? (
+          <>
+            <TextInput
+              style={commonStyles.input}
+              value={matricula}
+              onChangeText={(text) => {
+                setMatricula(text);
+                if (erro) setErro("");
+              }}
+              placeholder="Matrícula"
+              placeholderTextColor={colors.textSecondary}
+              keyboardType="numeric"
+            />
+            <TextInput
+              style={commonStyles.input}
+              value={codeAcess}
+              onChangeText={(text) => {
+                setCodeAcess(text);
+                if (erro) setErro("");
+              }}
+              placeholder="Código da escola"
+              placeholderTextColor={colors.textSecondary}
+              keyboardType="numeric"
+            />
+          </>
+        ) : (
+          <>
+            <TextInput
+              style={commonStyles.input}
+              value={codigoNutri}
+              onChangeText={(text) => {
+                setCodigoNutri(text);
+                if (erro) setErro("");
+              }}
+              placeholder="Código de acesso"
+              placeholderTextColor={colors.textSecondary}
+              keyboardType="numeric"
+            />
+            <TextInput
+              style={commonStyles.input}
+              value={senhaNutri}
+              onChangeText={(text) => {
+                setSenhaNutri(text);
+                if (erro) setErro("");
+              }}
+              placeholder="Senha"
+              placeholderTextColor={colors.textSecondary}
+              secureTextEntry
+            />
+          </>
+        )}
 
         <Pressable style={styles.button} onPress={entrar}>
-          <Text style={styles.buttonText}>Enviar</Text>
+          <Text style={commonStyles.buttonText}>Entrar</Text>
         </Pressable>
       </View>
       <StatusBar style="auto" />
@@ -55,42 +133,9 @@ export default function Login() {
   );
 }
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 16,
-  },
-  card: {
-    width: "100%",
-    maxWidth: 500,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: "#000",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "700",
-    marginBottom: 16,
-  },
-  input: {
-    width: "100%",
-    borderWidth: 1,
-    borderColor: "#000",
-    padding: 12,
-    marginBottom: 12,
-  },
   button: {
-    borderWidth: 1,
-    borderColor: "#000",
-    paddingVertical: 14,
-    alignItems: "center",
-  },
-  buttonText: {
-    fontWeight: "700",
-    color: "#000",
+    ...commonStyles.button,
+    borderRadius: radius.sm,
   },
 });

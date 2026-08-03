@@ -1,102 +1,119 @@
 import React from "react";
-import { View, StyleSheet, Text, Pressable } from "react-native";
+import { View, StyleSheet, Text, Pressable, ScrollView } from "react-native";
 import { GlobalContext } from "../context/GlobalContext";
 import { useNavigation } from "@react-navigation/native";
+import { colors, commonStyles, radius } from "../theme/theme";
 
 export const Home = () => {
   const dataContext = React.useContext(GlobalContext);
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
+    <ScrollView contentContainerStyle={commonStyles.screen}>
+      <View style={commonStyles.card}>
         {dataContext.data.escola && dataContext.data.funcionario ? (
           <>
-            <Text style={styles.title}>
+            <Text style={commonStyles.title}>
               Olá, {dataContext.data.funcionario.nome}
             </Text>
+            <Text style={commonStyles.subtitle}>{dataContext.data.escola.nome}</Text>
 
-            <Pressable
-              style={styles.mainButton}
-              onPress={() => navigation.navigate("Planilhas")}
-            >
-              <Text style={styles.mainButtonText}>Ir para Planilhas</Text>
-            </Pressable>
+            <View style={styles.actionsRow}>
+              <Pressable
+                style={styles.mainButton}
+                onPress={() => navigation.navigate("Planilhas")}
+              >
+                <Text style={commonStyles.buttonText}>Ir para Planilhas</Text>
+              </Pressable>
+
+              <Pressable
+                style={styles.secondaryButton}
+                onPress={() => navigation.navigate("Dashboard")}
+              >
+                <Text style={commonStyles.secondaryButtonText}>Ver Dashboard</Text>
+              </Pressable>
+            </View>
+
+            <Text style={styles.sectionTitle}>Horários</Text>
 
             {dataContext.data.escola.horarios.map((horario) => (
-              <View key={horario.id} style={styles.item}>
-                <Pressable
-                  style={({ hovered }) => [
-                    styles.pressable,
-                    hovered && styles.pressableHover,
-                  ]}
-                  onPress={() =>
-                    navigation.navigate("Horarios", {
-                      id: horario.id,
-                    })
-                  }
-                >
-                  <Text style={styles.itemTitle}>{horario.nome}</Text>
-                  <Text>Início: {horario.inicio}</Text>
-                  <Text>Fim: {horario.fim}</Text>
-                  <Text>Amostra: {horario.horarioAmostra}</Text>
-                </Pressable>
-              </View>
+              <Pressable
+                key={horario.id}
+                style={({ hovered }) => [
+                  styles.item,
+                  hovered && styles.itemHover,
+                ]}
+                onPress={() =>
+                  navigation.navigate("Horarios", {
+                    id: horario.id,
+                  })
+                }
+              >
+                <Text style={styles.itemTitle}>{horario.nome}</Text>
+                <Text style={styles.itemText}>Início: {horario.inicio}</Text>
+                <Text style={styles.itemText}>Fim: {horario.fim}</Text>
+                <Text style={styles.itemText}>Amostra: {horario.horarioAmostra}</Text>
+              </Pressable>
             ))}
           </>
         ) : (
-          <Text>Carregando...</Text>
+          <Text style={commonStyles.subtitle}>Carregando...</Text>
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 16,
-  },
-  card: {
-    width: "100%",
-    maxWidth: 500,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: "#000",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "700",
-    marginBottom: 16,
+  actionsRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    marginBottom: 20,
   },
   mainButton: {
-    backgroundColor: "#2563eb",
+    flexGrow: 1,
+    backgroundColor: colors.primary,
     paddingVertical: 12,
     paddingHorizontal: 16,
-    borderRadius: 8,
-    marginBottom: 16,
+    borderRadius: radius.sm,
     alignItems: "center",
   },
-  mainButtonText: {
-    color: "#fff",
+  secondaryButton: {
+    flexGrow: 1,
+    backgroundColor: colors.primaryLight,
+    borderWidth: 1,
+    borderColor: colors.primaryLightBorder,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: radius.sm,
+    alignItems: "center",
+  },
+  sectionTitle: {
+    fontSize: 16,
     fontWeight: "700",
+    color: colors.textPrimary,
+    marginBottom: 10,
   },
   item: {
-    borderTopWidth: 1,
-    borderTopColor: "#000",
-    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: radius.md,
+    padding: 14,
+    marginBottom: 10,
+    backgroundColor: "#fafafa",
   },
-  pressable: {
-    padding: 12,
-  },
-  pressableHover: {
-    backgroundColor: "#e8e8e8",
+  itemHover: {
+    backgroundColor: colors.primaryLight,
+    borderColor: colors.primaryLightBorder,
   },
   itemTitle: {
     fontWeight: "700",
+    color: colors.textPrimary,
+    marginBottom: 4,
+  },
+  itemText: {
+    color: colors.textSecondary,
   },
 });
 

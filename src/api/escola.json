@@ -33,6 +33,14 @@
       "nome": "Suco"
     }
   ],
+  "nutricionistas": [
+    {
+      "id": 1,
+      "nome": "Dra. Fernanda Lima",
+      "codAcesso": 9001,
+      "senha": "nutri2026"
+    }
+  ],
   "escolas": [
     {
       "id": 1,
@@ -57,42 +65,14 @@
           "nome": "Café da Manhã",
           "inicio": "07:30",
           "fim": "08:30",
-          "horarioAmostra": "08:00",
-          "alimentos": [
-            {
-              "alimentoId": 1,
-              "temperatura": 65
-            },
-            {
-              "alimentoId": 2,
-              "temperatura": 30
-            },
-            {
-              "alimentoId": 8,
-              "temperatura": 8
-            }
-          ]
+          "horarioAmostra": "08:00"
         },
         {
           "id": 2,
           "nome": "Almoço",
           "inicio": "11:30",
           "fim": "13:00",
-          "horarioAmostra": "12:00",
-          "alimentos": [
-            {
-              "alimentoId": 3,
-              "temperatura": 72
-            },
-            {
-              "alimentoId": 4,
-              "temperatura": 74
-            },
-            {
-              "alimentoId": 5,
-              "temperatura": 76
-            }
-          ]
+          "horarioAmostra": "12:00"
         }
       ]
     },
@@ -114,34 +94,14 @@
           "nome": "Café da Manhã",
           "inicio": "08:00",
           "fim": "09:00",
-          "horarioAmostra": "08:30",
-          "alimentos": [
-            {
-              "alimentoId": 1,
-              "temperatura": 63
-            },
-            {
-              "alimentoId": 2,
-              "temperatura": 27
-            }
-          ]
+          "horarioAmostra": "08:30"
         },
         {
           "id": 2,
           "nome": "Almoço",
           "inicio": "12:00",
           "fim": "13:30",
-          "horarioAmostra": "12:30",
-          "alimentos": [
-            {
-              "alimentoId": 6,
-              "temperatura": 71
-            },
-            {
-              "alimentoId": 7,
-              "temperatura": 75
-            }
-          ]
+          "horarioAmostra": "12:30"
         }
       ]
     },
@@ -163,34 +123,14 @@
           "nome": "Lanche da Manhã",
           "inicio": "09:00",
           "fim": "09:30",
-          "horarioAmostra": "09:10",
-          "alimentos": [
-            {
-              "alimentoId": 2,
-              "temperatura": 28
-            },
-            {
-              "alimentoId": 8,
-              "temperatura": 7
-            }
-          ]
+          "horarioAmostra": "09:10"
         },
         {
           "id": 2,
           "nome": "Jantar",
           "inicio": "18:30",
           "fim": "19:30",
-          "horarioAmostra": "19:00",
-          "alimentos": [
-            {
-              "alimentoId": 3,
-              "temperatura": 70
-            },
-            {
-              "alimentoId": 5,
-              "temperatura": 74
-            }
-          ]
+          "horarioAmostra": "19:00"
         }
       ]
     }
